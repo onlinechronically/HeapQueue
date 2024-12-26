@@ -5,4 +5,7 @@ author "lillie"
 description "An efficient and minimalistic queue plugin for FiveM servers"
 version "1.0.0"
 
-server_script "server.lua"
+server_scripts {
+    "heap.lua",
+    "server.lua"
+}
