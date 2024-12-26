@@ -35,3 +35,15 @@ local function dequeue()
         return { value = first.value, type = first.type }
     end
 end
+
+Citizen.CreateThread(function()
+    while true do
+        Wait(1000)
+        local action = dequeue()
+        if action then
+            if action.type == "insert" then
+                HeapInsert(action.value)
+            end
+        end
+    end
+end)
