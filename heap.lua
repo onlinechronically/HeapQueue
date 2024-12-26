@@ -67,3 +67,17 @@ function HeapExtract()
     moveDown(1)
     return extractedEntry
 end
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(1000)
+        local counter = 1
+        for position, entry in ipairs(Heap) do
+            if entry.active then
+                entry.deferrals.update("Queue Position: " ..
+                    position .. "/" .. #Heap .. "\nTime Elapsed: " .. os.time() - entry.time .. " seconds")
+                counter = counter + 1
+            end
+        end
+    end
+end)
