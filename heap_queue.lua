@@ -51,6 +51,8 @@ Citizen.CreateThread(function()
                 entry.deferrals.done()
                 ServerData.count = ServerData.count + 1
                 ServerData.is_extracting = false
+            elseif action.type == "decrement" then
+                ServerData.count = ServerData.count - 1
             end
         end
     end
