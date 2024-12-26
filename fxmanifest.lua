@@ -7,5 +7,6 @@ version "1.0.0"
 
 server_scripts {
     "heap.lua",
+    "heap_queue.lua",
     "server.lua"
 }
