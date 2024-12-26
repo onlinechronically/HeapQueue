@@ -74,7 +74,10 @@ Citizen.CreateThread(function()
         Citizen.Wait(1000)
         local counter = 0
         for position, entry in ipairs(Heap) do
-            if entry.active then
+            if entry.network_violations < 60 and GetPlayerLastMsg(entry.id) > 30000 then
+                entry.network_violations = entry.network_violations + 1
+            end
+            if entry.network_violations < 60 then
                 entry.deferrals.update("Queue Position: " ..
                     counter .. "/" .. total .. "\nTime Elapsed: " .. os.time() - entry.time .. " seconds")
                 counter = counter + 1

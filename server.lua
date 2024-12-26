@@ -8,7 +8,6 @@ AddEventHandler("playerConnecting", function(_, _, deferrals)
                 time = os.time(),
                 priority = Config.priority[identifier] or 0,
                 deferrals = deferrals,
-                active = true,
                 network_violations = 0,
                 id = source
             })
