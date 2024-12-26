@@ -72,6 +72,10 @@ Citizen.CreateThread(function()
     local total = 1
     while true do
         Citizen.Wait(1000)
+        if ServerData.count < GetConvarInt('sv_maxclients', 32) and not ServerData.is_extracting and #Heap > 0 then
+            ServerData.is_extracting = true
+            Enqueue("extract", {})
+        end
         local counter = 0
         for position, entry in ipairs(Heap) do
             if entry.network_violations < 60 and GetPlayerLastMsg(entry.id) > 30000 then

@@ -1,3 +1,8 @@
+ServerData = {
+    count = 0,
+    is_extracting = false,
+}
+
 AddEventHandler("playerConnecting", function(_, _, deferrals)
     local source = source
     local identifier = GetPlayerIdentifierByType(source, Config.identifier_type)

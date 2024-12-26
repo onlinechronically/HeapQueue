@@ -43,6 +43,14 @@ Citizen.CreateThread(function()
         if action then
             if action.type == "insert" then
                 HeapInsert(action.value)
+            elseif action.type == "extract" then
+                local entry = HeapExtract()
+                while entry.network_violations >= 60 do
+                    entry = HeapExtract()
+                end
+                entry.deferrals.done()
+                ServerData.count = ServerData.count + 1
+                ServerData.is_extracting = false
             end
         end
     end
